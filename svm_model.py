@@ -16,8 +16,7 @@ import seaborn as sns
 
 
 # Load the dataset from the uploaded file area
-data = pd.read_csv('data.csv')
-
+data = pd.read_csv('stock_13k.csv', encoding='latin1')
 # Define stopwords list
 stop_words = set(stopwords.words('english'))
 
@@ -40,7 +39,7 @@ X = data['Processed_Text']
 y = data['Sentiment']
 
 # Feature extraction using TF-IDF Vectorizer
-vectorizer = TfidfVectorizer(max_features=2000)
+vectorizer = TfidfVectorizer(max_features=2500)
 X_features = vectorizer.fit_transform(X)
 
 # Split the train, test data at a 80:20 split
