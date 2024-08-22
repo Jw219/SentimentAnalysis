@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore")
 
 
 
-data = pd.read_csv('data.csv')
+data = pd.read_csv('stock_13k.csv', encoding='latin1')
 
 data.drop_duplicates(inplace=True) # Drop duplicates
 
