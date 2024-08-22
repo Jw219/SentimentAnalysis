@@ -16,7 +16,7 @@ import seaborn as sns
 nltk.download('stopwords')
 
 # Load the data from the file area
-data = pd.read_csv('data.csv')
+data = pd.read_csv('stock_13k.csv', encoding='latin1')
 
 # Preprocessing function
 def preprocess_text(text):
@@ -46,10 +46,10 @@ vectorizer = TfidfVectorizer(max_features=4500, min_df=6, max_df=0.8, stop_words
 X = vectorizer.fit_transform(X).toarray()
 
 # Split the data into train and test at a ratio of 80:20
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # call on the RandomForestClassifier to complete classification on the dataset
-text_classifier = RandomForestClassifier(n_estimators=200, random_state=0)
+text_classifier = RandomForestClassifier(n_estimators=500, random_state=0)
 text_classifier.fit(X_train, y_train)
 
 # Predictions
